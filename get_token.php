@@ -67,7 +67,7 @@ else {
     }
   }
   $produkID = $_GET['produkID'];
-  $kabupaten = mysqli_query($conn,"SELECT * FROM `tb_produk_social` WHERE id = '$produkID' ORDER BY id ASC");
+  $kabupaten = mysqli_query($conn,"SELECT * FROM `tb_prepaid` WHERE id = '$produkID' ORDER BY id ASC");
   $kabupaten_row = mysqli_fetch_array($kabupaten);
 ?>
                 <div class="modal-header">
@@ -76,7 +76,7 @@ else {
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form role="form" id="search_form" action="<?php echo $urlweb; ?>/order_social.php" method="POST">
+                <form role="form" id="search_form" action="<?php echo $urlweb; ?>/order_prepaid.php" method="POST">
                     <div class="modal-body text-center">
                       <table style="width: 100%;">
                         <tbody>
@@ -84,12 +84,12 @@ else {
                           <tr>
                             <td class="text-left pt-2 pb-2" style="width: 45%!important; border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">Kategori Layanan:</td>
                             <td class="text-left pt-2 pb-2" style="border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">
-                              <?php echo $kabupaten_row['kategori']; ?>
+                              <?php echo $kabupaten_row['brand']; ?>
                               <input type="hidden" class="form-control" name="produkID" value="<?php echo $_GET['produkID']; ?>" readonly>
                             </td>
                           </tr>
                           <tr>
-                            <td class="text-left pt-2 pb-2" style="border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">Jenis Layanan:</td>
+                            <td class="text-left pt-2 pb-2" style="border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">Nominal Layanan:</td>
                             <td class="text-left pt-2 pb-2" style="border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">
                               <?php echo $kabupaten_row['title']; ?>
                             </td>
@@ -99,13 +99,6 @@ else {
                             <td class="text-left pt-2 pb-2" style="border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">
                               <?php echo $_GET['userID']; ?>
                               <input type="hidden" class="form-control" name="userID" value="<?php echo $_GET['userID']; ?>">
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="text-left pt-2 pb-2" style="width: 45%!important; border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">Jumlah:</td>
-                            <td class="text-left pt-2 pb-2" style="border: 0!important; vertical-align: middle; white-space: normal; word-break: normal; color: #fff;">
-                              <?php echo $_GET['qty']; ?>
-                              <input type="hidden" class="form-control" name="qty" value="<?php echo $_GET['qty']; ?>" readonly>
                             </td>
                           </tr>
                           <tr>
